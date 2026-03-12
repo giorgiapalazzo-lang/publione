@@ -498,29 +498,172 @@ export default function App() {
 
           {activeSection === 'sla' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <h1>SLA Operativi</h1>
-              <p>Tempi standard di gestione delle attività interne.</p>
+              <h1>SLA Operativi – Tempi Standard di Consegna</h1>
+              <p className="text-lg">Gli SLA operativi (Service Level Agreement) definiscono i tempi standard di gestione delle attività interne dell’agenzia. Servono a garantire organizzazione, prevedibilità e rispetto delle scadenze nei progetti.</p>
               
-              <div className="space-y-6">
-                <div className="flex gap-4 items-start p-4 bg-white border border-slate-200 rounded-xl">
-                  <div className="w-12 h-12 bg-brand-blue/10 rounded-lg flex items-center justify-center text-brand-blue flex-shrink-0 font-bold">24h</div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 m-0">Attivazione Progetto</h4>
-                    <p className="text-sm text-slate-500 m-0">Caricamento Chronos, creazione cartelle OneDrive e chat Teams.</p>
+              <div className="bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10 mb-12">
+                <p className="text-sm text-brand-blue/80 mb-0">Gli SLA permettono ai team di lavorare in modo coordinato e aiutano a evitare urgenze non pianificate, sovraccarichi di lavoro e ritardi nelle consegne. I tempi indicati rappresentano standard operativi interni e possono essere adattati in base alla complessità del progetto o alle esigenze specifiche dell’Azienda Partner.</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-brand-blue mt-0 flex items-center gap-2"><Plus className="w-5 h-5" /> 1. Attivazione progetto</h3>
+                  <p className="text-xs text-slate-500 mb-4">Dopo l’approvazione del progetto, l’Account Manager deve procedere all’attivazione operativa della commessa.</p>
+                  <ul className="text-[10px] text-slate-600 space-y-1 mb-4 list-none p-0">
+                    <li>• Caricamento del progetto su Chronos</li>
+                    <li>• Inserimento commesse e task</li>
+                    <li>• Inserimento anagrafica fornitori</li>
+                    <li>• Creazione cartelle OneDrive</li>
+                    <li>• Apertura chat Teams</li>
+                  </ul>
+                  <div className="flex items-center gap-2 text-brand-blue font-bold text-xs pt-3 border-t border-slate-100">
+                    <Clock className="w-4 h-4" /> Entro 24 ore lavorative
                   </div>
                 </div>
-                <div className="flex gap-4 items-start p-4 bg-white border border-slate-200 rounded-xl">
-                  <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center text-emerald-600 flex-shrink-0 font-bold">48h</div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 m-0">Pianificazione Operativa</h4>
-                    <p className="text-sm text-slate-500 m-0">Suddivisione task e assegnazione risorse da parte dell'Executive.</p>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-emerald-600 mt-0 flex items-center gap-2"><LayoutDashboard className="w-5 h-5" /> 2. Pianificazione operativa</h3>
+                  <p className="text-xs text-slate-500 mb-4">L’Executive Manager deve organizzare la pianificazione operativa e assegnare i task ai team.</p>
+                  <ul className="text-[10px] text-slate-600 space-y-1 mb-4 list-none p-0">
+                    <li>• Suddivisione attività operative</li>
+                    <li>• Definizione delle priorità</li>
+                    <li>• Assegnazione delle risorse</li>
+                  </ul>
+                  <div className="flex items-center gap-2 text-emerald-600 font-bold text-xs pt-3 border-t border-slate-100">
+                    <Clock className="w-4 h-4" /> Entro 48 ore lavorative
                   </div>
                 </div>
-                <div className="flex gap-4 items-start p-4 bg-white border border-slate-200 rounded-xl">
-                  <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 flex-shrink-0 font-bold">3gg</div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 m-0">Finalizzazione Proposta</h4>
-                    <p className="text-sm text-slate-500 m-0">La proposta deve essere pronta almeno 3 giorni prima della presentazione.</p>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-amber-600 mt-0 flex items-center gap-2"><FileText className="w-5 h-5" /> 3. Proposte progettuali</h3>
+                  <p className="text-xs text-slate-500 mb-4">Il progetto deve essere completato internamente prima della presentazione al cliente.</p>
+                  <p className="text-[10px] text-slate-600 mb-4">La proposta deve essere condivisa con Account Manager, specialist coinvolti e, quando necessario, con il CMO.</p>
+                  <div className="flex items-center gap-2 text-amber-600 font-bold text-xs pt-3 border-t border-slate-100">
+                    <Clock className="w-4 h-4" /> Almeno 3 giorni lavorativi prima
+                  </div>
+                </div>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-purple-600 mt-0 flex items-center gap-2"><Palette className="w-5 h-5" /> 4. Produzione materiali creativi</h3>
+                  <p className="text-xs text-slate-500 mb-4">Sviluppo materiali visivi e creativi sulla base dei task assegnati.</p>
+                  <div className="grid grid-cols-2 gap-2 mb-4">
+                    <div className="p-2 bg-slate-50 rounded-lg text-[10px]">
+                      <span className="font-bold block">Creatività social:</span> 24–48h
+                    </div>
+                    <div className="p-2 bg-slate-50 rounded-lg text-[10px]">
+                      <span className="font-bold block">Format/Template:</span> 48–72h
+                    </div>
+                    <div className="p-2 bg-slate-50 rounded-lg text-[10px]">
+                      <span className="font-bold block">Video/Reel:</span> 48–72h
+                    </div>
+                    <div className="p-2 bg-slate-50 rounded-lg text-[10px]">
+                      <span className="font-bold block">Campagne:</span> 3–5gg
+                    </div>
+                  </div>
+                  <p className="text-[10px] text-slate-400 italic">Tempistiche concordate con Executive e Account.</p>
+                </div>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-brand-red mt-0 flex items-center gap-2"><RefreshCw className="w-5 h-5" /> 5. Revisioni materiali</h3>
+                  <p className="text-xs text-slate-500 mb-4">Gestione ordinata delle modifiche per evitare cicli infiniti.</p>
+                  <ul className="text-[10px] text-slate-600 space-y-2 mb-4 list-none p-0">
+                    <li className="flex justify-between"><span>Revisioni semplici:</span> <span className="font-bold">24h</span></li>
+                    <li className="flex justify-between"><span>Revisioni strutturali:</span> <span className="font-bold">48h</span></li>
+                  </ul>
+                  <p className="text-[10px] text-slate-400 italic">Richieste raccolte in modo chiaro e condivise in un’unica soluzione.</p>
+                </div>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-blue-600 mt-0 flex items-center gap-2"><Globe className="w-5 h-5" /> 6. Progetti digitali</h3>
+                  <p className="text-xs text-slate-500 mb-4">Attività relative a siti web o contenuti digitali.</p>
+                  <ul className="text-[10px] text-slate-600 space-y-2 mb-4 list-none p-0">
+                    <li className="flex justify-between"><span>Aggiornamento contenuti:</span> <span className="font-bold">24–48h</span></li>
+                    <li className="flex justify-between"><span>Nuove pagine:</span> <span className="font-bold">48–72h</span></li>
+                    <li className="flex justify-between"><span>Ottimizzazione SEO:</span> <span className="font-bold">48h</span></li>
+                  </ul>
+                </div>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-indigo-600 mt-0 flex items-center gap-2"><MessageSquare className="w-5 h-5" /> 7. Piano editoriale social</h3>
+                  <p className="text-xs text-slate-500 mb-4">Sviluppo del piano editoriale post-strategia.</p>
+                  <div className="space-y-1 mb-4">
+                    <div className="flex justify-between text-[10px]"><span>Analisi & Benchmark:</span> <span>1gg</span></div>
+                    <div className="flex justify-between text-[10px]"><span>Cluster & Strategia:</span> <span>1gg</span></div>
+                    <div className="flex justify-between text-[10px]"><span>Piano Operativo:</span> <span>1gg</span></div>
+                  </div>
+                  <div className="flex items-center gap-2 text-indigo-600 font-bold text-xs pt-3 border-t border-slate-100">
+                    <Clock className="w-4 h-4" /> Totale: 2–3 giorni lavorativi
+                  </div>
+                </div>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-pink-600 mt-0 flex items-center gap-2"><Zap className="w-5 h-5" /> 8. Pubblicazione social</h3>
+                  <p className="text-xs text-slate-500 mb-4">Programmazione e pubblicazione secondo calendario approvato.</p>
+                  <div className="flex items-center gap-2 text-pink-600 font-bold text-xs pt-3 border-t border-slate-100">
+                    <Clock className="w-4 h-4" /> Almeno 48 ore prima
+                  </div>
+                </div>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-orange-600 mt-0 flex items-center gap-2"><Plus className="w-5 h-5" /> 9. Richieste extra</h3>
+                  <p className="text-xs text-slate-500 mb-4">Valutazione interna delle attività non previste dal progetto.</p>
+                  <p className="text-[10px] text-slate-600 mb-4">Valutazione Account → Responsabile Reparto → Eventuale CMO.</p>
+                  <div className="flex items-center gap-2 text-orange-600 font-bold text-xs pt-3 border-t border-slate-100">
+                    <Clock className="w-4 h-4" /> Entro 24 ore lavorative
+                  </div>
+                </div>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-red-600 mt-0 flex items-center gap-2"><AlertTriangle className="w-5 h-5" /> 10. Richieste urgenti</h3>
+                  <p className="text-xs text-slate-500 mb-4">Gestione solo quando realmente necessarie dopo valutazione.</p>
+                  <div className="flex items-center gap-2 text-red-600 font-bold text-xs pt-3 border-t border-slate-100">
+                    <Clock className="w-4 h-4" /> Risposta interna: 4–8 ore
+                  </div>
+                </div>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-cyan-600 mt-0 flex items-center gap-2"><Users className="w-5 h-5" /> 11. Aggiornamenti Partner</h3>
+                  <p className="text-xs text-slate-500 mb-4">Mantenere aggiornato il Partner sull’avanzamento del progetto.</p>
+                  <div className="flex items-center gap-2 text-cyan-600 font-bold text-xs pt-3 border-t border-slate-100">
+                    <Clock className="w-4 h-4" /> Aggiornamento settimanale
+                  </div>
+                </div>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-violet-600 mt-0 flex items-center gap-2"><PieChart className="w-5 h-5" /> 12. Reportistica mensile</h3>
+                  <p className="text-xs text-slate-500 mb-4">Preparazione e condivisione report di performance e insight.</p>
+                  <div className="flex items-center gap-2 text-violet-600 font-bold text-xs pt-3 border-t border-slate-100">
+                    <Clock className="w-4 h-4" /> Entro i primi 5gg lavorativi
+                  </div>
+                </div>
+
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="text-slate-700 mt-0 flex items-center gap-2"><Folder className="w-5 h-5" /> 13. Archiviazione</h3>
+                  <p className="text-xs text-slate-500 mb-4">Archiviazione corretta su OneDrive per tracciabilità.</p>
+                  <div className="flex items-center gap-2 text-slate-700 font-bold text-xs pt-3 border-t border-slate-100">
+                    <Clock className="w-4 h-4" /> Entro 24 ore dalla consegna
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-8 bg-slate-50 border border-slate-200 rounded-3xl">
+                <h2 className="text-slate-900 mt-0 mb-6">14. Principi di gestione degli SLA</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex gap-3 items-start">
+                    <CheckCircle2 className="w-5 h-5 text-brand-red flex-shrink-0" />
+                    <p className="text-sm text-slate-600 m-0">Le attività devono essere pianificate con anticipo.</p>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <CheckCircle2 className="w-5 h-5 text-brand-red flex-shrink-0" />
+                    <p className="text-sm text-slate-600 m-0">Le urgenze devono essere limitate ai casi realmente necessari.</p>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <CheckCircle2 className="w-5 h-5 text-brand-red flex-shrink-0" />
+                    <p className="text-sm text-slate-600 m-0">Le richieste dell’Azienda Partner devono essere valutate prima di essere accettate.</p>
+                  </div>
+                  <div className="flex gap-3 items-start">
+                    <CheckCircle2 className="w-5 h-5 text-brand-red flex-shrink-0" />
+                    <p className="text-sm text-slate-600 m-0">I team devono lavorare in coordinamento rispettando le tempistiche concordate.</p>
                   </div>
                 </div>
               </div>
