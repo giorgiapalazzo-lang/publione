@@ -193,36 +193,51 @@ export default function App() {
           {activeSection === 'flows' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <h1>Flussi Operativi Trasversali</h1>
-              <p>I flussi trasversali definiscono il percorso che un progetto segue all’interno dell’agenzia, coordinando direzione, account, director, executive e team operativi.</p>
+              <p>I flussi trasversali definiscono il percorso che un progetto segue all’interno dell’agenzia, coordinando direzione, account, specialist, executive e team operativi.</p>
               
               <h2>1. Ingresso Nuovo Azienda Partner</h2>
+              <p className="text-sm text-slate-600 mb-6">Riguarda i nuovi progetti che entrano in agenzia tramite acquisizione commerciale o direzione.</p>
               <FlowDiagram 
                 title="Processo Acquisizione Nuovo Cliente"
                 steps={[
                   { label: 'Origine Opportunità', sublabel: 'Commerciale/Direzione', type: 'start' },
                   { label: 'Condivisione CMO', sublabel: 'Valutazione Strategica', type: 'process' },
-                  { label: 'Decisione Percorso', sublabel: 'Account vs Director', type: 'decision' },
+                  { label: 'Decisione Percorso', sublabel: 'Account vs Specialist', type: 'decision' },
                   { label: 'Debrief Interno', sublabel: 'Allineamento Team', type: 'process' },
-                  { label: 'Creazione Proposta', sublabel: 'Documento Condiviso', type: 'process' },
+                  { label: 'Creazione Proposta', sublabel: 'Canva / PowerPoint', type: 'process' },
                   { label: 'Validazione Interna', sublabel: 'CMO/Client Dir', type: 'process' },
                   { label: 'Presentazione', sublabel: 'Azienda Partner', type: 'process' },
                   { label: 'Attivazione', sublabel: 'Chronos / Commesse', type: 'end' }
                 ]}
               />
 
-              <h2>2. Upselling su Cliente Esistente</h2>
+              <h2>2. Upselling su Azienda Partner Esistente</h2>
+              <p className="text-sm text-slate-600 mb-6">Sviluppo di nuovi servizi su Aziende Partner già attivi.</p>
               <FlowDiagram 
                 title="Processo Upselling"
                 steps={[
                   { label: 'Identificazione', sublabel: 'Account/Direzione', type: 'start' },
                   { label: 'Condivisione CMO', sublabel: 'Fattibilità', type: 'process' },
-                  { label: 'Costruzione Proposta', sublabel: 'Director + Account', type: 'process' },
+                  { label: 'Costruzione Proposta', sublabel: 'Specialist + Account', type: 'process' },
                   { label: 'Approvazione', sublabel: 'Azienda Partner', type: 'process' },
                   { label: 'Aggiornamento', sublabel: 'Chronos', type: 'end' }
                 ]}
               />
 
-              <h2>3. Sviluppo Sito Web / Digital</h2>
+              <h2>3. Gestione Progetto Ongoing</h2>
+              <p className="text-sm text-slate-600 mb-6">Riguarda i progetti già attivi.</p>
+              <FlowDiagram 
+                title="Workflow Ongoing"
+                steps={[
+                  { label: 'Pianificazione', sublabel: 'Commesse / Task', type: 'start' },
+                  { label: 'Coordinamento', sublabel: 'Executive Manager', type: 'process' },
+                  { label: 'Riunione Settimanale', sublabel: 'Verifica Stato', type: 'process' },
+                  { label: 'Monitoraggio Delivery', sublabel: 'Qualità & Scadenze', type: 'process' },
+                  { label: 'Aggiornamento Partner', sublabel: 'Milestone', type: 'end' }
+                ]}
+              />
+
+              <h2>4. Sviluppo Sito Web / Progetto Digital</h2>
               <FlowDiagram 
                 title="Workflow Digital"
                 steps={[
@@ -230,12 +245,25 @@ export default function App() {
                   { label: 'Struttura & UX', sublabel: 'Architettura Informazioni', type: 'process' },
                   { label: 'Grafica', sublabel: 'Visual Design', type: 'process' },
                   { label: 'Sviluppo', sublabel: 'Internal/External', type: 'process' },
-                  { label: 'Ottimizzazione', sublabel: 'SEO/AEO/GEO', type: 'process' },
+                  { label: 'Ottimizzazione', sublabel: 'SEO', type: 'process' },
                   { label: 'Test & Go Live', sublabel: 'Pubblicazione', type: 'end' }
                 ]}
               />
 
-              <h2>4. Gestione Richieste Extra / Urgenti</h2>
+              <h2>5. Sviluppo Piano Editoriale Social</h2>
+              <FlowDiagram 
+                title="Workflow Social"
+                steps={[
+                  { label: 'Ricezione Brief', sublabel: 'Account/Partner', type: 'start' },
+                  { label: 'Analisi Preliminare', sublabel: 'Trend & Competitor', type: 'process' },
+                  { label: 'Strategia Social', sublabel: 'Cluster Contenuti', type: 'process' },
+                  { label: 'Creazione PED', sublabel: 'Piano Editoriale', type: 'process' },
+                  { label: 'Produzione', sublabel: 'Grafiche/Video/Copy', type: 'process' },
+                  { label: 'Pubblicazione', sublabel: 'Sponsorizzazioni', type: 'end' }
+                ]}
+              />
+
+              <h2>6. Gestione Richieste Extra / Urgenti</h2>
               <FlowDiagram 
                 title="Gestione Eccezioni"
                 steps={[
@@ -243,6 +271,17 @@ export default function App() {
                   { label: 'Valutazione Interna', sublabel: 'Resp. Reparto', type: 'decision' },
                   { label: 'Confronto CMO', sublabel: 'Se necessario', type: 'process' },
                   { label: 'Decisione', sublabel: 'Accettazione/Rimodulazione', type: 'end' }
+                ]}
+              />
+
+              <h2>7. Chiusura Progetto</h2>
+              <FlowDiagram 
+                title="Workflow Chiusura"
+                steps={[
+                  { label: 'Verifica Attività', sublabel: 'Completamento', type: 'start' },
+                  { label: 'Archiviazione', sublabel: 'OneDrive / Server', type: 'process' },
+                  { label: 'Consuntivazione', sublabel: 'Chronos', type: 'process' },
+                  { label: 'Report Finale', sublabel: 'Allegato Progetto', type: 'end' }
                 ]}
               />
 
@@ -369,7 +408,7 @@ export default function App() {
 
                 <div>
                   <h3>Pianificazione Operativa</h3>
-                  <p>Dopo il debrief, l\'Executive Manager organizza la pianificazione:</p>
+                  <p>Dopo il debrief, l'Executive Manager organizza la pianificazione:</p>
                   <ul>
                     <li>Definizione di task e microtask.</li>
                     <li>Assegnazione delle attività ai team.</li>
@@ -378,13 +417,13 @@ export default function App() {
                   </ul>
                 </div>
 
-                <div className="p-6 bg-slate-900 text-slate-100 rounded-2xl">
-                  <h3 className="text-white mt-0">Principi di Gestione</h3>
-                  <ul className="text-sm text-slate-400 space-y-2">
-                    <li><strong className="text-white">Chiarezza:</strong> Massima precisione nella raccolta informazioni.</li>
-                    <li><strong className="text-white">Trasparenza:</strong> Condivisione aperta con i team interni.</li>
-                    <li><strong className="text-white">Documentazione:</strong> Ogni informazione rilevante deve essere scritta.</li>
-                    <li><strong className="text-white">Allineamento:</strong> Coerenza totale tra strategia e operatività.</li>
+                <div className="p-6 bg-white border border-slate-200 rounded-2xl">
+                  <h3 className="text-slate-900 mt-0">Principi di Gestione</h3>
+                  <ul className="text-sm text-slate-600 space-y-2">
+                    <li><strong className="text-slate-900">Chiarezza:</strong> Massima precisione nella raccolta informazioni.</li>
+                    <li><strong className="text-slate-900">Trasparenza:</strong> Condivisione aperta con i team interni.</li>
+                    <li><strong className="text-slate-900">Documentazione:</strong> Ogni informazione rilevante deve essere scritta.</li>
+                    <li><strong className="text-slate-900">Allineamento:</strong> Coerenza totale tra strategia e operatività.</li>
                   </ul>
                 </div>
               </div>
@@ -538,27 +577,27 @@ export default function App() {
                 </section>
               </div>
 
-              <div className="p-8 bg-slate-900 text-white rounded-3xl mb-12">
-                <h2 className="text-white mt-0 mb-6">Ambiti di Intervento Prioritari</h2>
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-6">Ambiti di Intervento Prioritari</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
                     <Plus className="w-5 h-5 text-brand-blue mb-2" />
-                    <p className="font-bold text-xs mb-1">Nuovi Partner</p>
-                    <p className="text-[10px] text-slate-400">Impostazione strategica iniziale.</p>
+                    <p className="font-bold text-xs mb-1 text-slate-900">Nuovi Partner</p>
+                    <p className="text-[10px] text-slate-500">Impostazione strategica iniziale.</p>
                   </div>
-                  <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
                     <TrendingUp className="w-5 h-5 text-emerald-500 mb-2" />
-                    <p className="font-bold text-xs mb-1">Upselling</p>
-                    <p className="text-[10px] text-slate-400">Sviluppo nuove opportunità.</p>
+                    <p className="font-bold text-xs mb-1 text-slate-900">Upselling</p>
+                    <p className="text-[10px] text-slate-500">Sviluppo nuove opportunità.</p>
                   </div>
-                  <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
                     <GitMerge className="w-5 h-5 text-purple-500 mb-2" />
-                    <p className="font-bold text-xs mb-1">Multidisciplinari</p>
-                    <p className="text-[10px] text-slate-400">Coordinamento tra più reparti.</p>
+                    <p className="font-bold text-xs mb-1 text-slate-900">Multidisciplinari</p>
+                    <p className="text-[10px] text-slate-500">Coordinamento tra più reparti.</p>
                   </div>
-                  <div className="p-4 bg-white/5 border border-white/10 rounded-xl">
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
                     <AlertTriangle className="w-5 h-5 text-brand-red mb-2" />
-                    <p className="font-bold text-xs mb-1">Criticità</p>
+                    <p className="font-bold text-xs mb-1 text-slate-900">Criticità</p>
                     <p className="text-[10px] text-slate-400">Gestione urgenze o blocchi.</p>
                   </div>
                 </div>
@@ -747,14 +786,14 @@ export default function App() {
                 </div>
               </section>
 
-              <div className="p-8 bg-slate-900 text-white rounded-3xl mb-12">
-                <h2 className="text-white mt-0 mb-8 text-center">Struttura Organizzativa</h2>
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-8 text-center">Struttura Organizzativa</h2>
                 <div className="flex flex-col items-center space-y-4 not-prose">
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-400 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-500 w-full max-w-sm text-center">
                     Direzione / Client Director
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-300 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     CMO (Facilitazione e Coordinamento)
                   </div>
                   <ArrowDown className="w-4 h-4 text-brand-red" />
@@ -762,7 +801,7 @@ export default function App() {
                     Strategy Director (Specialist Director)
                   </div>
                   <ArrowDown className="w-4 h-4 text-brand-red" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-200 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     Executive Manager / Team Operativi
                   </div>
                 </div>
@@ -992,14 +1031,14 @@ export default function App() {
                 </div>
               </section>
 
-              <div className="p-8 bg-slate-900 text-white rounded-3xl mb-12">
-                <h2 className="text-white mt-0 mb-8 text-center">16. Ruolo nell’Organizzazione</h2>
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-8 text-center">16. Ruolo nell’Organizzazione</h2>
                 <div className="flex flex-col items-center space-y-4 not-prose">
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-400 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-500 w-full max-w-sm text-center">
                     Direzione / Client Director
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-300 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     CMO (Facilitazione e Coordinamento)
                   </div>
                   <ArrowDown className="w-4 h-4 text-purple-500" />
@@ -1007,11 +1046,11 @@ export default function App() {
                     Digital Strategy Director (Specialist Director)
                   </div>
                   <ArrowDown className="w-4 h-4 text-purple-500" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-200 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     Executive Manager
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-400 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-500 w-full max-w-sm text-center">
                     Team Operativi
                   </div>
                 </div>
@@ -1163,14 +1202,14 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="p-8 bg-slate-900 text-white rounded-3xl mb-12">
-                <h2 className="text-white mt-0 mb-8 text-center">15. Ruolo nell’Organizzazione</h2>
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-8 text-center">15. Ruolo nell’Organizzazione</h2>
                 <div className="flex flex-col items-center space-y-4 not-prose">
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-400 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-500 w-full max-w-sm text-center">
                     Direzione / Client Director
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-300 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     CMO (Facilitazione e Coordinamento)
                   </div>
                   <ArrowDown className="w-4 h-4 text-rose-500" />
@@ -1178,11 +1217,11 @@ export default function App() {
                     Creative Director (Specialist Director)
                   </div>
                   <ArrowDown className="w-4 h-4 text-rose-500" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-200 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     Executive Manager
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-400 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-500 w-full max-w-sm text-center">
                     Team Creativi Operativi
                   </div>
                 </div>
@@ -1354,14 +1393,14 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="p-8 bg-slate-900 text-white rounded-3xl mb-12">
-                <h2 className="text-white mt-0 mb-8 text-center">16. Ruolo nell’Organizzazione</h2>
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-8 text-center">16. Ruolo nell’Organizzazione</h2>
                 <div className="flex flex-col items-center space-y-4 not-prose">
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-400 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-500 w-full max-w-sm text-center">
                     Direzione / Client Director
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-300 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     CMO (Facilitazione e Coordinamento)
                   </div>
                   <ArrowDown className="w-4 h-4 text-blue-500" />
@@ -1369,11 +1408,11 @@ export default function App() {
                     Media Director (Specialist Director)
                   </div>
                   <ArrowDown className="w-4 h-4 text-blue-500" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-200 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-700 w-full max-w-sm text-center">
                     Executive Manager
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-400 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-500 w-full max-w-sm text-center">
                     Team Operativi Media
                   </div>
                 </div>
@@ -1548,14 +1587,14 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="p-8 bg-slate-900 text-white rounded-3xl mb-12">
-                <h2 className="text-white mt-0 mb-8 text-center">16. Ruolo nell’Organizzazione</h2>
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-8 text-center">16. Ruolo nell’Organizzazione</h2>
                 <div className="flex flex-col items-center space-y-4 not-prose">
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-400 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-500 w-full max-w-sm text-center">
                     Direzione / Client Director
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-300 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     CMO (Facilitazione e Coordinamento)
                   </div>
                   <ArrowDown className="w-4 h-4 text-amber-500" />
@@ -1563,11 +1602,11 @@ export default function App() {
                     Event Director (Specialist Director)
                   </div>
                   <ArrowDown className="w-4 h-4 text-amber-500" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-200 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     Executive Manager
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-400 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-500 w-full max-w-sm text-center">
                     Team Operativi Eventi
                   </div>
                 </div>
@@ -1693,23 +1732,23 @@ export default function App() {
                 </section>
               </div>
 
-              <div className="p-8 bg-slate-900 text-white rounded-3xl mb-12">
-                <h2 className="text-white mt-0 mb-6">Relazione Specialist ↔ Executive</h2>
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-6">Relazione Specialist ↔ Executive</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div>
                     <h4 className="text-brand-blue font-bold mb-4 uppercase tracking-wider text-xs">Lo Specialist definisce</h4>
                     <ul className="space-y-3 list-none p-0">
                       <li className="flex gap-3 items-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
-                        <span className="text-sm">Linee guida strategiche</span>
+                        <span className="text-sm text-slate-700">Linee guida strategiche</span>
                       </li>
                       <li className="flex gap-3 items-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
-                        <span className="text-sm">Priorità di business</span>
+                        <span className="text-sm text-slate-700">Priorità di business</span>
                       </li>
                       <li className="flex gap-3 items-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
-                        <span className="text-sm">Standard qualitativi elevati</span>
+                        <span className="text-sm text-slate-700">Standard qualitativi elevati</span>
                       </li>
                     </ul>
                   </div>
@@ -1718,7 +1757,7 @@ export default function App() {
                     <ul className="space-y-3 list-none p-0">
                       <li className="flex gap-3 items-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-brand-red"></div>
-                        <span className="text-sm">Operatività quotidiana</span>
+                        <span className="text-sm text-slate-700">Operatività quotidiana</span>
                       </li>
                       <li className="flex gap-3 items-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-brand-red"></div>
@@ -1844,18 +1883,18 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="p-8 bg-slate-900 text-white rounded-3xl mb-12">
-                <h2 className="text-white mt-0 mb-8 text-center">Ruolo nell’Organizzazione</h2>
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-8 text-center">Ruolo nell’Organizzazione</h2>
                 <div className="flex flex-col items-center space-y-4 not-prose">
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-400 w-full max-w-sm text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-500 w-full max-w-sm text-center">
                     Direzione / Client Director
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-300 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     CMO (Coordinamento Strategico)
                   </div>
-                  <ArrowDown className="w-4 h-4 text-slate-700" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-[10px] font-medium text-slate-200 w-full max-w-sm text-center">
+                  <ArrowDown className="w-4 h-4 text-slate-400" />
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
                     Specialist Director (Indirizzo Strategico)
                   </div>
                   <ArrowDown className="w-4 h-4 text-brand-red" />
@@ -2086,8 +2125,8 @@ export default function App() {
                 </section>
               </div>
 
-              <div className="mt-12 p-8 bg-slate-900 text-white rounded-3xl">
-                <h2 className="text-white mt-0 mb-8 text-center">Schema Sintetico del Flusso</h2>
+              <div className="mt-12 p-8 bg-white border border-slate-200 rounded-3xl">
+                <h2 className="text-slate-900 mt-0 mb-8 text-center">Schema Sintetico del Flusso</h2>
                 <div className="flex flex-col items-center space-y-4 not-prose">
                   {[
                     'Ingresso Progetto (Loris/Giulio/Partner)',
@@ -2100,7 +2139,7 @@ export default function App() {
                     'Monitoraggio & Delivery Progetto'
                   ].map((step, i) => (
                     <React.Fragment key={i}>
-                      <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-xs font-medium text-white w-full max-w-md text-center">
+                      <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-700 w-full max-w-md text-center">
                         {step}
                       </div>
                       {i < 7 && <ArrowDown className="w-4 h-4 text-brand-red" />}
@@ -2250,9 +2289,9 @@ export default function App() {
                       <span key={skill} className="px-3 py-1 bg-white border border-slate-200 rounded-full text-[10px] font-medium text-slate-600 shadow-sm">{skill}</span>
                     ))}
                   </div>
-                  <div className="mt-6 p-5 bg-slate-900 text-white rounded-2xl">
-                    <h4 className="text-white mt-0 mb-3 text-sm">Principi di Lavoro</h4>
-                    <ul className="text-[10px] text-slate-400 space-y-2 list-none p-0">
+                  <div className="mt-6 p-5 bg-white border border-slate-200 rounded-2xl">
+                    <h4 className="text-slate-900 mt-0 mb-3 text-sm">Principi di Lavoro</h4>
+                    <ul className="text-[10px] text-slate-600 space-y-2 list-none p-0">
                       <li className="flex gap-2"><CheckCircle2 className="w-3 h-3 text-brand-red" /> Lavorare in autonomia</li>
                       <li className="flex gap-2"><CheckCircle2 className="w-3 h-3 text-brand-red" /> Ricerca attiva informazioni</li>
                       <li className="flex gap-2"><CheckCircle2 className="w-3 h-3 text-brand-red" /> Comunicazione costante con Account</li>
@@ -2385,27 +2424,27 @@ export default function App() {
 
                 <div>
                   <h2>Principi Operativi</h2>
-                  <div className="p-6 bg-slate-900 text-white rounded-2xl">
-                    <ul className="text-[10px] text-slate-400 space-y-3 list-none p-0">
+                  <div className="p-6 bg-white border border-slate-200 rounded-2xl">
+                    <ul className="text-[10px] text-slate-600 space-y-3 list-none p-0">
                       <li className="flex gap-3">
                         <CheckCircle2 className="w-4 h-4 text-brand-red flex-shrink-0" />
                         <div>
-                          <p className="text-white font-bold m-0">Approccio Data-Driven</p>
-                          <p className="m-0">Ogni decisione tecnica e strategica deve essere basata sull'analisi dei dati.</p>
+                          <p className="text-slate-900 font-bold m-0">Approccio Data-Driven</p>
+                          <p className="m-0 text-slate-500">Ogni decisione tecnica e strategica deve essere basata sull'analisi dei dati.</p>
                         </div>
                       </li>
                       <li className="flex gap-3">
                         <CheckCircle2 className="w-4 h-4 text-brand-red flex-shrink-0" />
                         <div>
-                          <p className="text-white font-bold m-0">Integrazione Strategica</p>
-                          <p className="m-0">Le attività SEO/Automation devono essere coerenti con la comunicazione globale.</p>
+                          <p className="text-slate-900 font-bold m-0">Integrazione Strategica</p>
+                          <p className="m-0 text-slate-500">Le attività SEO/Automation devono essere coerenti con la comunicazione globale.</p>
                         </div>
                       </li>
                       <li className="flex gap-3">
                         <CheckCircle2 className="w-4 h-4 text-brand-red flex-shrink-0" />
                         <div>
-                          <p className="text-white font-bold m-0">Ottimizzazione Continua</p>
-                          <p className="m-0">Monitoraggio costante e miglioramento incrementale delle performance.</p>
+                          <p className="text-slate-900 font-bold m-0">Ottimizzazione Continua</p>
+                          <p className="m-0 text-slate-500">Monitoraggio costante e miglioramento incrementale delle performance.</p>
                         </div>
                       </li>
                     </ul>
@@ -2538,14 +2577,14 @@ export default function App() {
                 </div>
               </section>
 
-              <div className="p-8 bg-slate-900 text-white rounded-3xl mb-12">
-                <h2 className="text-white mt-0 mb-8 text-center">Struttura del Reparto Creativo</h2>
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-8 text-center">Struttura del Reparto Creativo</h2>
                 <div className="flex flex-col items-center space-y-4 not-prose">
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-xs font-medium text-white w-full max-w-md text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-700 w-full max-w-md text-center">
                     Creative Director (Paolo)
                   </div>
                   <ArrowDown className="w-4 h-4 text-brand-red" />
-                  <div className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl text-xs font-medium text-white w-full max-w-md text-center">
+                  <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-medium text-slate-700 w-full max-w-md text-center">
                     Executive Creative Manager
                   </div>
                   <ArrowDown className="w-4 h-4 text-brand-red" />
@@ -2728,14 +2767,156 @@ export default function App() {
           {activeSection === 'content' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <h1>Content Coordinator</h1>
-              <p>Garantisce coerenza, qualità e uniformità dei testi in tutti i progetti.</p>
+              <p className="text-lg">Responsabile del coordinamento dei contenuti testuali prodotti all’interno dei progetti dell’agenzia. Garantisce coerenza, qualità e uniformità dei testi.</p>
               
-              <h2>Responsabilità</h2>
-              <ul>
-                <li><strong>Revisione Editoriale:</strong> Controllo tono di voce e chiarezza.</li>
-                <li><strong>Linee Guida:</strong> Definizione stile di scrittura e messaggi chiave.</li>
-                <li><strong>Supporto Team:</strong> Aiuto nella stesura di copy complessi o strategici.</li>
-              </ul>
+              <div className="bg-indigo-50 p-6 rounded-2xl border border-indigo-100 mb-12">
+                <h3 className="text-indigo-700 mt-0 flex items-center gap-2"><FileText className="w-5 h-5" /> 1. Obiettivo del Ruolo</h3>
+                <p className="text-sm text-indigo-600/80 mb-0">Assicurare che i contenuti siano allineati alla strategia del progetto, al posizionamento del brand e al tono di voce dell’Azienda Partner, migliorando chiarezza ed efficacia comunicativa.</p>
+              </div>
+
+              <section className="mb-12">
+                <h2>2. Posizionamento nella Struttura</h2>
+                <p className="text-sm text-slate-600 mb-6">Il Content Coordinator lavora in coordinamento con:</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 not-prose">
+                  {[
+                    { role: 'Strategist', desc: 'Allineamento contenuti alla strategia.' },
+                    { role: 'Social Media Manager', icon: LayoutDashboard, desc: 'Contenuti editoriali social.' },
+                    { role: 'Team Creativo', icon: Palette, desc: 'Integrazione visiva e testuale.' },
+                    { role: 'SEO & Digital', icon: Search, desc: 'Ottimizzazione contenuti digitali.' },
+                    { role: 'Account Manager', icon: Users, desc: 'Allineamento esigenze Azienda Partner.' }
+                  ].map((item, i) => (
+                    <div key={i} className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm">
+                      <h4 className="font-bold text-indigo-600 text-[10px] mb-1 uppercase tracking-wider">{item.role}</h4>
+                      <p className="text-[10px] text-slate-500 m-0">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="mb-12">
+                <h2>3. Coordinamento dei Contenuti</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    'Revisione dei testi prodotti dai team operativi',
+                    'Verifica della coerenza con il tono di voce',
+                    'Controllo della chiarezza e della qualità',
+                    'Suggerimenti editoriali per l’efficacia comunicativa'
+                  ].map((text, i) => (
+                    <div key={i} className="flex items-center gap-3 p-3 bg-slate-50 border border-slate-100 rounded-lg text-[10px] text-slate-700">
+                      <CheckCircle2 className="w-3 h-3 text-indigo-500 flex-shrink-0" />
+                      {text}
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <section className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="mt-0 text-slate-800">4. Supporto ai Team</h3>
+                  <p className="text-[10px] text-slate-500 mb-4">Supporto nella scrittura dei testi:</p>
+                  <ul className="space-y-2 text-[10px] text-slate-600 list-none p-0">
+                    <li className="flex gap-2">• Fornire linee guida per la scrittura.</li>
+                    <li className="flex gap-2">• Suggerire miglioramenti ai testi.</li>
+                    <li className="flex gap-2">• Supportare la definizione dei messaggi chiave.</li>
+                    <li className="flex gap-2">• Aiutare nella costruzione della struttura.</li>
+                  </ul>
+                </section>
+
+                <section className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="mt-0 text-slate-800">5. Intervento sui Progetti</h3>
+                  <p className="text-[10px] text-slate-500 mb-4">Intervento diretto quando necessario:</p>
+                  <ul className="space-y-2 text-[10px] text-slate-600 list-none p-0">
+                    <li className="flex gap-2">• Correggere o migliorare i testi.</li>
+                    <li className="flex gap-2">• Riorganizzare la struttura dei contenuti.</li>
+                    <li className="flex gap-2">• Adattare i contenuti al tono di voce.</li>
+                    <li className="flex gap-2">• Migliorare leggibilità ed efficacia.</li>
+                  </ul>
+                </section>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <section className="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <h3 className="mt-0 text-slate-800">6. Collaborazione Strategica</h3>
+                  <p className="text-[10px] text-slate-500 mb-4">Confronto con lo Strategist:</p>
+                  <div className="space-y-2">
+                    {['Messaggi chiave del progetto', 'Linea narrativa della comunicazione', 'Coerenza strategia-contenuti'].map(item => (
+                      <div key={item} className="px-3 py-2 bg-white border border-slate-100 rounded-lg text-[10px] font-medium text-slate-700">{item}</div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <h3 className="mt-0 text-slate-800">7. Collaborazione Team Social</h3>
+                  <p className="text-[10px] text-slate-500 mb-4">Supporto ai Social Media Manager:</p>
+                  <div className="space-y-2">
+                    {['Revisione dei copy dei post', 'Suggerimenti sui format testuali', 'Miglioramento struttura contenuti social'].map(item => (
+                      <div key={item} className="px-3 py-2 bg-white border border-slate-100 rounded-lg text-[10px] font-medium text-slate-700">{item}</div>
+                    ))}
+                  </div>
+                </section>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <section className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="mt-0 text-slate-800">8. Team Digital & SEO</h3>
+                  <p className="text-[10px] text-slate-500 mb-4">Efficacia dei contenuti online:</p>
+                  <ul className="text-[10px] text-slate-600 space-y-2 list-none p-0">
+                    <li>• Supporto scrittura contenuti web.</li>
+                    <li>• Miglioramento leggibilità testi digitali.</li>
+                    <li>• Allineamento con strategia SEO.</li>
+                  </ul>
+                </section>
+                <section className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="mt-0 text-slate-800">9. Linee Guida Editoriali</h3>
+                  <p className="text-[10px] text-slate-500 mb-4">Definizione standard qualitativi:</p>
+                  <ul className="text-[10px] text-slate-600 space-y-2 list-none p-0">
+                    <li>• Tono di voce del brand e stile.</li>
+                    <li>• Struttura contenuti e messaggi chiave.</li>
+                  </ul>
+                </section>
+              </div>
+
+              <section className="mb-12 p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+                <h3 className="mt-0 text-slate-800">10. Revisione Materiali</h3>
+                <p className="text-xs text-slate-600 mb-4">Intervento prima della consegna finale:</p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {['Presentazioni', 'Materiali Istituzionali', 'Contenuti Digitali', 'Contenuti Social'].map(item => (
+                    <div key={item} className="p-3 bg-white border border-slate-200 rounded-xl text-center">
+                      <p className="text-[10px] text-indigo-700 font-bold m-0">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <section className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="mt-0 text-slate-800">11. Account Manager</h3>
+                  <p className="text-[10px] text-slate-600 m-0">Garantisce che i contenuti siano coerenti con le aspettative dell’Azienda Partner.</p>
+                </section>
+                <section className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="mt-0 text-slate-800">12. Gestione Documenti</h3>
+                  <p className="text-[10px] text-slate-600 m-0">Contribuisce all’organizzazione e alla verifica della coerenza dei testi nei diversi documenti.</p>
+                </section>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div>
+                  <h2>13. Competenze Richieste</h2>
+                  <div className="flex flex-wrap gap-2">
+                    {['Copywriting', 'Editing', 'Tone of Voice', 'Editorial Strategy', 'Collaboration'].map(skill => (
+                      <span key={skill} className="px-2 py-1 bg-indigo-100 text-indigo-700 text-[10px] font-bold rounded uppercase tracking-wider">{skill}</span>
+                    ))}
+                  </div>
+                </div>
+                <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <h3 className="mt-0 text-slate-800">14. Principi di Lavoro</h3>
+                  <ul className="text-[10px] text-slate-600 space-y-2 list-none p-0">
+                    <li className="flex gap-2"><CheckCircle2 className="w-3 h-3 text-indigo-600" /> Attenzione alla qualità dei contenuti.</li>
+                    <li className="flex gap-2"><CheckCircle2 className="w-3 h-3 text-indigo-600" /> Coerenza tra strategia e comunicazione.</li>
+                    <li className="flex gap-2"><CheckCircle2 className="w-3 h-3 text-indigo-600" /> Supporto costante ai team operativi.</li>
+                  </ul>
+                </div>
+              </div>
             </motion.div>
           )}
 
