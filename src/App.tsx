@@ -50,7 +50,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { FlowDiagram } from './components/FlowDiagram';
 
-type SectionId = 'intro' | 'brief' | 'social' | 'seo' | 'account' | 'specialists' | 'grafici' | 'cmo' | 'executive' | 'strategy' | 'digital-dir' | 'creative-dir' | 'media-dir' | 'event-dir' | 'pr' | 'content' | 'flows' | 'raci' | 'sla' | 'meetings';
+type SectionId = 'intro' | 'ceo' | 'sales-dir' | 'financial-dir' | 'brief' | 'social' | 'seo' | 'account' | 'directors' | 'grafici' | 'cmo' | 'executive' | 'strategy' | 'digital-dir' | 'creative-dir' | 'media-dir' | 'event-dir' | 'pr' | 'content' | 'flows' | 'raci' | 'sla' | 'meetings';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<SectionId>('intro');
@@ -68,13 +68,16 @@ export default function App() {
 
   const navItems: { id: SectionId; label: string; icon: any; category: string; indentation?: number }[] = [
     { id: 'intro', label: 'Introduzione', icon: BookOpen, category: 'Generale' },
+    { id: 'ceo', label: 'CEO', icon: ShieldCheck, category: 'Mansioni - Direzione' },
+    { id: 'sales-dir', label: 'Sales & Client Director', icon: TrendingUp, category: 'Mansioni - Direzione' },
+    { id: 'financial-dir', label: 'Financial Director', icon: BarChart, category: 'Mansioni - Direzione' },
     { id: 'flows', label: 'Flussi Trasversali', icon: GitBranch, category: 'Processi' },
     { id: 'brief', label: 'Brief & Debrief', icon: FileText, category: 'Processi' },
     { id: 'raci', label: 'Matrice RACI', icon: CheckCircle2, category: 'Governance' },
     { id: 'sla', label: 'SLA Operativi', icon: Clock, category: 'Governance' },
     { id: 'meetings', label: 'Gestione Riunioni', icon: MessageSquare, category: 'Governance' },
     { id: 'cmo', label: 'CMO', icon: Target, category: 'Mansioni - Direzione' },
-    { id: 'specialists', label: 'Directors', icon: Briefcase, category: 'Mansioni - Direzione' },
+    { id: 'directors', label: 'Directors', icon: Briefcase, category: 'Mansioni - Direzione' },
     {id: 'strategy', label: 'Strategic Director', icon: Compass, category: 'Mansioni - Direzione', indentation: 1 },
     { id: 'digital-dir', label: 'Digital Strategy Director', icon: Globe, category: 'Mansioni - Direzione', indentation: 1 },
     { id: 'creative-dir', label: 'Creative Director', icon: Palette, category: 'Mansioni - Direzione', indentation: 1 },
@@ -193,7 +196,7 @@ export default function App() {
           {activeSection === 'flows' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <h1>Flussi Operativi Trasversali</h1>
-              <p>I flussi trasversali definiscono il percorso che un progetto segue all’interno dell’agenzia, coordinando direzione, account, specialist, executive e team operativi.</p>
+              <p>I flussi trasversali definiscono il percorso che un progetto segue all’interno dell’agenzia, coordinando direzione, account, director, executive e team operativi.</p>
               
               <h2>1. Ingresso Nuovo Azienda Partner</h2>
               <p className="text-sm text-slate-600 mb-6">Riguarda i nuovi progetti che entrano in agenzia tramite acquisizione commerciale o direzione.</p>
@@ -202,7 +205,7 @@ export default function App() {
                 steps={[
                   { label: 'Origine Opportunità', sublabel: 'Commerciale/Direzione', type: 'start' },
                   { label: 'Condivisione CMO', sublabel: 'Valutazione Strategica', type: 'process' },
-                  { label: 'Decisione Percorso', sublabel: 'Account vs Specialist', type: 'decision' },
+                  { label: 'Decisione Percorso', sublabel: 'Account / Director', type: 'decision' },
                   { label: 'Debrief Interno', sublabel: 'Allineamento Team', type: 'process' },
                   { label: 'Creazione Proposta', sublabel: 'Canva / PowerPoint', type: 'process' },
                   { label: 'Validazione Interna', sublabel: 'CMO/Client Dir', type: 'process' },
@@ -218,7 +221,7 @@ export default function App() {
                 steps={[
                   { label: 'Identificazione', sublabel: 'Account/Direzione', type: 'start' },
                   { label: 'Condivisione CMO', sublabel: 'Fattibilità', type: 'process' },
-                  { label: 'Costruzione Proposta', sublabel: 'Specialist + Account', type: 'process' },
+                  { label: 'Costruzione Proposta', sublabel: 'Director + Account', type: 'process' },
                   { label: 'Approvazione', sublabel: 'Azienda Partner', type: 'process' },
                   { label: 'Aggiornamento', sublabel: 'Chronos', type: 'end' }
                 ]}
@@ -537,7 +540,7 @@ export default function App() {
                 <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
                   <h3 className="text-amber-600 mt-0 flex items-center gap-2"><FileText className="w-5 h-5" /> 3. Proposte progettuali</h3>
                   <p className="text-xs text-slate-500 mb-4">Il progetto deve essere completato internamente prima della presentazione al cliente.</p>
-                  <p className="text-[10px] text-slate-600 mb-4">La proposta deve essere condivisa con Account Manager, specialist coinvolti e, quando necessario, con il CMO.</p>
+                  <p className="text-[10px] text-slate-600 mb-4">La proposta deve essere condivisa con Account Manager, director coinvolti e, quando necessario, con il CMO.</p>
                   <div className="flex items-center gap-2 text-amber-600 font-bold text-xs pt-3 border-t border-slate-100">
                     <Clock className="w-4 h-4" /> Almeno 3 giorni lavorativi prima
                   </div>
@@ -670,6 +673,251 @@ export default function App() {
             </motion.div>
           )}
 
+          {activeSection === 'ceo' && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <h1>Chief Executive Officer (CEO)</h1>
+              <p className="text-lg">Il Chief Executive Officer è la figura di vertice dell’agenzia, responsabile della visione strategica, della sostenibilità finanziaria e della crescita complessiva dell’organizzazione.</p>
+              
+              <div className="bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10 mb-12">
+                <h3 className="text-brand-blue mt-0 flex items-center gap-2"><ShieldCheck className="w-5 h-5" /> Obiettivo del Ruolo</h3>
+                <p className="text-sm text-brand-blue/80 mb-0">Definire la rotta dell’agenzia, assicurare l’eccellenza operativa e rappresentare PubliOne verso i principali stakeholder e il mercato. Il CEO garantisce che ogni attività sia allineata ai valori e agli obiettivi a lungo termine della società.</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <section className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="mt-0 text-slate-800">Visione & Strategia</h3>
+                  <p className="text-xs text-slate-500 mb-4 leading-relaxed">Guida l'evoluzione dell'agenzia anticipando i cambiamenti del mercato e definendo il posizionamento competitivo.</p>
+                  <ul className="space-y-3 list-none p-0">
+                    <li className="flex gap-3 text-xs text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                      <span>Definizione degli obiettivi strategici annuali e pluriennali</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                      <span>Approvazione di nuovi investimenti e partnership strategiche</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                      <span>Supervisione della cultura aziendale e dei valori</span>
+                    </li>
+                  </ul>
+                </section>
+
+                <section className="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <h3 className="mt-0 text-slate-800">Governance & Finanza</h3>
+                  <p className="text-xs text-slate-500 mb-4 leading-relaxed">Assicura la solidità economica e il corretto funzionamento dei processi decisionali interni.</p>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-white border border-slate-100 rounded-xl">
+                      <p className="font-bold text-brand-blue text-[10px] uppercase mb-1">Performance Finanziaria</p>
+                      <p className="text-[10px] text-slate-500">Monitoraggio dei KPI economici e approvazione del budget globale.</p>
+                    </div>
+                    <div className="p-3 bg-white border border-slate-100 rounded-xl">
+                      <p className="font-bold text-brand-blue text-[10px] uppercase mb-1">Risk Management</p>
+                      <p className="text-[10px] text-slate-500">Identificazione e mitigazione dei rischi operativi e reputazionali.</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-6">Responsabilità Chiave</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <Target className="w-5 h-5 text-brand-blue mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Leadership</p>
+                    <p className="text-[10px] text-slate-500">Ispirazione e guida del management team.</p>
+                  </div>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <TrendingUp className="w-5 h-5 text-emerald-500 mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Crescita</p>
+                    <p className="text-[10px] text-slate-500">Espansione del business e acquisizione grandi account.</p>
+                  </div>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <Users className="w-5 h-5 text-purple-500 mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Relazioni</p>
+                    <p className="text-[10px] text-slate-500">Rappresentanza istituzionale dell'agenzia.</p>
+                  </div>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <Scale className="w-5 h-5 text-brand-red mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Etica</p>
+                    <p className="text-[10px] text-slate-400">Garanzia di integrità e conformità normativa.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 bg-brand-blue/5 border border-brand-blue/10 rounded-2xl">
+                <h3 className="text-brand-blue mt-0">Interazione con la Struttura</h3>
+                <p className="text-sm text-brand-blue/80">Il CEO lavora a stretto contatto con il **CMO** per la traduzione della visione in operatività e con i **Directors** per la supervisione delle aree di eccellenza. Presiede le riunioni di coordinamento strategico e interviene nelle decisioni ad alto impatto per l'agenzia.</p>
+              </div>
+            </motion.div>
+          )}
+
+          {activeSection === 'sales-dir' && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <h1>Sales & Client Director</h1>
+              <p className="text-lg">Il Sales & Client Director è il responsabile dello sviluppo commerciale dell’agenzia e della gestione strategica delle relazioni con i grandi Partner (Client Direction).</p>
+              
+              <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 mb-12">
+                <h3 className="text-emerald-700 mt-0 flex items-center gap-2"><TrendingUp className="w-5 h-5" /> Obiettivo del Ruolo</h3>
+                <p className="text-sm text-emerald-800/80 mb-0">Espandere il portfolio clienti dell’agenzia attraverso attività di New Business e consolidare i rapporti esistenti garantendo la massima soddisfazione del Partner e l’individuazione di nuove opportunità di crescita (Upselling).</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <section className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="mt-0 text-slate-800">Sviluppo Commerciale (Sales)</h3>
+                  <p className="text-xs text-slate-500 mb-4 leading-relaxed">Identificazione di nuovi lead e gestione del funnel di vendita fino alla chiusura del contratto.</p>
+                  <ul className="space-y-3 list-none p-0">
+                    <li className="flex gap-3 text-xs text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span>Ricerca e scouting di nuove opportunità di mercato</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span>Presentazione delle credenziali dell'agenzia ai prospect</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span>Negoziazione economica e contrattuale</span>
+                    </li>
+                  </ul>
+                </section>
+
+                <section className="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <h3 className="mt-0 text-slate-800">Client Direction</h3>
+                  <p className="text-xs text-slate-500 mb-4 leading-relaxed">Supervisione strategica degli account e mantenimento delle relazioni ad alto livello con i Partner.</p>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-white border border-slate-100 rounded-xl">
+                      <p className="font-bold text-emerald-600 text-[10px] uppercase mb-1">Customer Satisfaction</p>
+                      <p className="text-[10px] text-slate-500">Monitoraggio costante della qualità percepita dal cliente.</p>
+                    </div>
+                    <div className="p-3 bg-white border border-slate-100 rounded-xl">
+                      <p className="font-bold text-emerald-600 text-[10px] uppercase mb-1">Strategic Upselling</p>
+                      <p className="text-[10px] text-slate-500">Individuazione di bisogni latenti e proposta di nuovi servizi.</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-6">Responsabilità Operative</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <Briefcase className="w-5 h-5 text-emerald-600 mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">New Business</p>
+                    <p className="text-[10px] text-slate-500">Apertura nuovi mercati e settori.</p>
+                  </div>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <Users className="w-5 h-5 text-brand-blue mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Networking</p>
+                    <p className="text-[10px] text-slate-500">Gestione PR commerciali e relazioni.</p>
+                  </div>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <FileText className="w-5 h-5 text-purple-500 mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Proposte</p>
+                    <p className="text-[10px] text-slate-500">Supervisione offerte commerciali.</p>
+                  </div>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <BarChart className="w-5 h-5 text-brand-red mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Reporting</p>
+                    <p className="text-[10px] text-slate-400">Analisi pipeline e forecast vendite.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 bg-emerald-50 border border-emerald-100 rounded-2xl">
+                <h3 className="text-emerald-700 mt-0">Collaborazione con il Team</h3>
+                <p className="text-sm text-emerald-800/80">Il Sales & Client Director collabora strettamente con il **CEO** per la definizione degli obiettivi di crescita e con il **CMO** per l'allineamento tra promessa commerciale e capacità operativa. Supporta gli **Account Manager** nella gestione delle criticità e nelle fasi di rinnovo contrattuale.</p>
+              </div>
+            </motion.div>
+          )}
+
+          {activeSection === 'financial-dir' && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <h1>Financial Director</h1>
+              <p className="text-lg">Il Financial Director è responsabile della gestione finanziaria, della pianificazione economica e del controllo di gestione dell’agenzia, assicurando la redditività di ogni progetto e la solidità dell’intera struttura full-service.</p>
+              
+              <div className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 mb-12">
+                <h3 className="text-emerald-700 mt-0 flex items-center gap-2"><BarChart className="w-5 h-5" /> Obiettivo del Ruolo</h3>
+                <p className="text-sm text-emerald-600/80 mb-0">Ottimizzare le risorse finanziarie dell’agenzia, monitorare i margini di contribuzione dei progetti e supportare la direzione e gli account nella gestione dei budget dei Partner, garantendo equilibrio tra qualità del servizio e sostenibilità economica.</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <section className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                  <h3 className="mt-0 text-slate-800">Pianificazione & Controllo</h3>
+                  <p className="text-xs text-slate-500 mb-4 leading-relaxed">Supervisiona la salute finanziaria dell'agenzia attraverso un monitoraggio costante dei flussi di cassa e dei costi operativi.</p>
+                  <ul className="space-y-3 list-none p-0">
+                    <li className="flex gap-3 text-xs text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span>Elaborazione del budget annuale e dei forecast periodici</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span>Analisi della redditività per singolo Partner e per reparto</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span>Gestione dei flussi di cassa (Cash Flow Management)</span>
+                    </li>
+                    <li className="flex gap-3 text-xs text-slate-600">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                      <span>Supervisione dei processi di fatturazione e recupero crediti</span>
+                    </li>
+                  </ul>
+                </section>
+
+                <section className="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <h3 className="mt-0 text-slate-800">Amministrazione & Strumenti</h3>
+                  <p className="text-xs text-slate-500 mb-4 leading-relaxed">Gestione operativa dei dati e della documentazione amministrativa tramite gli strumenti aziendali.</p>
+                  <div className="space-y-3">
+                    <div className="p-3 bg-white border border-slate-100 rounded-xl">
+                      <p className="font-bold text-emerald-600 text-[10px] uppercase mb-1">Controllo Chronos</p>
+                      <p className="text-[10px] text-slate-500">Supervisione e verifica del corretto caricamento dei dati finanziari da parte degli Account; monitoraggio scostamenti e richiesta di integrazioni/correzioni tempestive.</p>
+                    </div>
+                    <div className="p-3 bg-white border border-slate-100 rounded-xl">
+                      <p className="font-bold text-emerald-600 text-[10px] uppercase mb-1">Controllo Drive & Documentazione</p>
+                      <p className="text-[10px] text-slate-500">Verifica della corretta archiviazione dei file amministrativi/fiscali su Drive da parte degli Account; richiesta di caricamento e compilazione della documentazione mancante.</p>
+                    </div>
+                    <div className="p-3 bg-white border border-slate-100 rounded-xl">
+                      <p className="font-bold text-emerald-600 text-[10px] uppercase mb-1">Supporto Account</p>
+                      <p className="text-[10px] text-slate-500">Validazione economica dei preventivi e supporto nella negoziazione con i fornitori esterni.</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
+                <h2 className="text-slate-900 mt-0 mb-6">Responsabilità in un'Agenzia Full-Service</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <Layers className="w-5 h-5 text-blue-500 mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Margini Reparti</p>
+                    <p className="text-[10px] text-slate-500">Analisi costi/ricavi di ogni singola area operativa.</p>
+                  </div>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <RefreshCw className="w-5 h-5 text-emerald-500 mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Procurement</p>
+                    <p className="text-[10px] text-slate-500">Ottimizzazione dei costi d'acquisto dei servizi esterni.</p>
+                  </div>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <PieChart className="w-5 h-5 text-purple-500 mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Reporting</p>
+                    <p className="text-[10px] text-slate-500">Produzione di report finanziari per CEO e Board.</p>
+                  </div>
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                    <Scale className="w-5 h-5 text-brand-red mb-2" />
+                    <p className="font-bold text-xs mb-1 text-slate-900">Compliance</p>
+                    <p className="text-[10px] text-slate-400">Garanzia di correttezza fiscale e amministrativa.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 bg-emerald-50 border border-emerald-100 rounded-2xl">
+                <h3 className="text-emerald-700 mt-0">Collaborazione Strategica</h3>
+                <p className="text-sm text-emerald-600/80">Il Financial Director interagisce costantemente con il **CEO** per la pianificazione degli investimenti, con il **CMO** per la valutazione della sostenibilità dei nuovi progetti e con l'**Executive Manager** per l'analisi dell'efficienza delle risorse umane interne.</p>
+              </div>
+            </motion.div>
+          )}
+
           {activeSection === 'cmo' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <h1>Chief Marketing Officer (CMO)</h1>
@@ -677,7 +925,7 @@ export default function App() {
               
               <div className="bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10 mb-12">
                 <h3 className="text-brand-blue mt-0 flex items-center gap-2"><ShieldCheck className="w-5 h-5" /> Obiettivo del Ruolo</h3>
-                <p className="text-sm text-brand-blue/80 mb-0">Garantire che i progetti siano coerenti, sostenibili e ben organizzati. Non svolge una funzione gerarchica ma facilita la collaborazione tra direzione, account, specialist e reparti operativi.</p>
+                <p className="text-sm text-brand-blue/80 mb-0">Garantire che i progetti siano coerenti, sostenibili e ben organizzati. Non svolge una funzione gerarchica ma facilita la collaborazione tra direzione, account, director e reparti operativi.</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -705,7 +953,7 @@ export default function App() {
                 </section>
 
                 <section className="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
-                  <h3 className="mt-0 text-slate-800">Coordinamento Specialist</h3>
+                  <h3 className="mt-0 text-slate-800">Coordinamento Director</h3>
                   <p className="text-xs text-slate-500 mb-4 leading-relaxed">Facilita il confronto tra le diverse funzioni strategiche per costruire una visione condivisa.</p>
                   <div className="space-y-3">
                     <div className="p-3 bg-white border border-slate-100 rounded-xl">
@@ -784,7 +1032,7 @@ export default function App() {
                     </li>
                     <li className="flex gap-2 items-start">
                       <X className="w-3 h-3 text-brand-red mt-0.5 flex-shrink-0" />
-                      <p className="text-[10px] text-slate-600 m-0"><strong>No Specialist:</strong> Non sostituisce la guida tecnica di area.</p>
+                      <p className="text-[10px] text-slate-600 m-0"><strong>No Director:</strong> Non sostituisce la guida tecnica di area.</p>
                     </li>
                     <li className="flex gap-2 items-start">
                       <X className="w-3 h-3 text-brand-red mt-0.5 flex-shrink-0" />
@@ -941,7 +1189,7 @@ export default function App() {
                   </div>
                   <ArrowDown className="w-4 h-4 text-brand-red" />
                   <div className="px-6 py-3 bg-brand-red text-white rounded-xl text-[10px] font-bold w-full max-w-sm text-center shadow-lg shadow-brand-red/20">
-                    Strategy Director (Specialist Director)
+                    Strategy Director (Director)
                   </div>
                   <ArrowDown className="w-4 h-4 text-brand-red" />
                   <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
@@ -993,7 +1241,7 @@ export default function App() {
 
               <section className="mb-12">
                 <h2>2. Posizionamento nella Struttura</h2>
-                <p className="text-sm text-slate-600 mb-6">Il Digital Strategy Director è uno <strong>Specialist Director</strong> dell’agenzia e lavora in coordinamento con:</p>
+                <p className="text-sm text-slate-600 mb-6">Il Digital Strategy Director è un <strong>Director</strong> dell’agenzia e lavora in coordinamento con:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 not-prose">
                   {[
                     { role: 'CMO', desc: 'Allineamento strategico dei progetti.' },
@@ -1080,7 +1328,7 @@ export default function App() {
                 <p className="text-xs text-slate-600 mb-4">Supervisione dello sviluppo web dell’agenzia:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="p-4 bg-purple-50 rounded-xl">
-                    <p className="text-[10px] text-purple-700 m-0">Definire la struttura dei siti web e coordinare il lavoro tra SEO specialist, grafici e sviluppatori.</p>
+                    <p className="text-[10px] text-purple-700 m-0">Definire la struttura dei siti web e coordinare il lavoro tra SEO director, grafici e sviluppatori.</p>
                   </div>
                   <div className="p-4 bg-purple-50 rounded-xl">
                     <p className="text-[10px] text-purple-700 m-0">Verificare la coerenza tecnica e garantire che i siti rispondano agli obiettivi del progetto.</p>
@@ -1186,7 +1434,7 @@ export default function App() {
                   </div>
                   <ArrowDown className="w-4 h-4 text-purple-500" />
                   <div className="px-6 py-3 bg-purple-600 text-white rounded-xl text-[10px] font-bold w-full max-w-sm text-center shadow-lg shadow-purple-600/20">
-                    Digital Strategy Director (Specialist Director)
+                    Digital Strategy Director (Director)
                   </div>
                   <ArrowDown className="w-4 h-4 text-purple-500" />
                   <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
@@ -1213,7 +1461,7 @@ export default function App() {
 
               <section className="mb-12">
                 <h2>2. Posizionamento nella Struttura</h2>
-                <p className="text-sm text-slate-600 mb-6">Il Creative Director è uno <strong>Specialist Director</strong> dell’agenzia e lavora in coordinamento con:</p>
+                <p className="text-sm text-slate-600 mb-6">Il Creative Director è un <strong>Director</strong> dell’agenzia e lavora in coordinamento con:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 not-prose">
                   {[
                     { role: 'CMO', desc: 'Allineamento strategico dei progetti.' },
@@ -1357,7 +1605,7 @@ export default function App() {
                   </div>
                   <ArrowDown className="w-4 h-4 text-rose-500" />
                   <div className="px-6 py-3 bg-rose-600 text-white rounded-xl text-[10px] font-bold w-full max-w-sm text-center shadow-lg shadow-rose-600/20">
-                    Creative Director (Specialist Director)
+                    Creative Director (Director)
                   </div>
                   <ArrowDown className="w-4 h-4 text-rose-500" />
                   <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
@@ -1384,7 +1632,7 @@ export default function App() {
 
               <section className="mb-12">
                 <h2>2. Posizionamento nella Struttura</h2>
-                <p className="text-sm text-slate-600 mb-6">Il Media Director è uno <strong>Specialist Director</strong> dell’agenzia e lavora in coordinamento con:</p>
+                <p className="text-sm text-slate-600 mb-6">Il Media Director è un <strong>Director</strong> dell’agenzia e lavora in coordinamento con:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 not-prose">
                   {[
                     { role: 'CMO', desc: 'Allineamento strategico dei progetti.' },
@@ -1548,7 +1796,7 @@ export default function App() {
                   </div>
                   <ArrowDown className="w-4 h-4 text-blue-500" />
                   <div className="px-6 py-3 bg-blue-600 text-white rounded-xl text-[10px] font-bold w-full max-w-sm text-center shadow-lg shadow-blue-600/20">
-                    Media Director (Specialist Director)
+                    Media Director (Director)
                   </div>
                   <ArrowDown className="w-4 h-4 text-blue-500" />
                   <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-700 w-full max-w-sm text-center">
@@ -1575,7 +1823,7 @@ export default function App() {
 
               <section className="mb-12">
                 <h2>2. Posizionamento nella Struttura</h2>
-                <p className="text-sm text-slate-600 mb-6">L’Event Director è uno <strong>Specialist Director</strong> e lavora in coordinamento con:</p>
+                <p className="text-sm text-slate-600 mb-6">L’Event Director è un <strong>Director</strong> e lavora in coordinamento con:</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 not-prose">
                   {[
                     { role: 'CMO', desc: 'Allineamento strategico dei progetti.' },
@@ -1742,7 +1990,7 @@ export default function App() {
                   </div>
                   <ArrowDown className="w-4 h-4 text-amber-500" />
                   <div className="px-6 py-3 bg-amber-600 text-white rounded-xl text-[10px] font-bold w-full max-w-sm text-center shadow-lg shadow-amber-600/20">
-                    Event Director (Specialist Director)
+                    Event Director (Director)
                   </div>
                   <ArrowDown className="w-4 h-4 text-amber-500" />
                   <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
@@ -1757,17 +2005,17 @@ export default function App() {
             </motion.div>
           )}
 
-          {activeSection === 'specialists' && (
+          {activeSection === 'directors' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <h1>Direzione Strategica di Area (Director)</h1>
-              <p className="text-lg">Gli Specialist rappresentano le figure cardine della direzione strategica dell’agenzia. Definiscono la strategia, guidano lo sviluppo e garantiscono la qualità delle soluzioni.</p>
+              <p className="text-lg">I Director rappresentano le figure cardine della direzione strategica dell’agenzia. Definiscono la strategia, guidano lo sviluppo e garantiscono la qualità delle soluzioni.</p>
               
               <div className="bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10 mb-12">
-                <h3 className="text-brand-blue mt-0 flex items-center gap-2"><Target className="w-5 h-5" /> Ruolo degli Specialist</h3>
+                <h3 className="text-brand-blue mt-0 flex items-center gap-2"><Target className="w-5 h-5" /> Ruolo dei Director</h3>
                 <p className="text-sm text-brand-blue/80 mb-0">Intervengono principalmente nelle fasi di progettazione e nei progetti complessi (nuovi Partner, nuove progettualità, upselling strategico). Supervisionano il lavoro operativo garantendo elevati standard qualitativi.</p>
               </div>
 
-              <h2>1. Struttura degli Specialist PubliOne</h2>
+              <h2>1. Struttura dei Director PubliOne</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 not-prose mb-12">
                 <div className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm hover:border-brand-blue transition-colors">
                   <div className="flex justify-between items-start mb-4">
@@ -1866,7 +2114,7 @@ export default function App() {
 
                 <section className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
                   <h3 className="mt-0 text-brand-red">Leadership & Team Operativi</h3>
-                  <p className="text-xs text-slate-500 mb-4">Lo Specialist ha la responsabilità di strutturare il team di lavoro per i progetti complessi:</p>
+                  <p className="text-xs text-slate-500 mb-4">Il Director ha la responsabilità di strutturare il team di lavoro per i progetti complessi:</p>
                   <ul className="text-xs text-slate-600 space-y-2 list-none p-0">
                     <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-brand-red flex-shrink-0" /> Individuare le risorse operative</li>
                     <li className="flex gap-2"><CheckCircle2 className="w-4 h-4 text-brand-red flex-shrink-0" /> Assegnare responsabilità chiare</li>
@@ -1876,10 +2124,10 @@ export default function App() {
               </div>
 
               <div className="p-8 bg-white border border-slate-200 rounded-3xl mb-12">
-                <h2 className="text-slate-900 mt-0 mb-6">Relazione Specialist ↔ Executive</h2>
+                <h2 className="text-slate-900 mt-0 mb-6">Relazione Director ↔ Executive</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div>
-                    <h4 className="text-brand-blue font-bold mb-4 uppercase tracking-wider text-xs">Lo Specialist definisce</h4>
+                    <h4 className="text-brand-blue font-bold mb-4 uppercase tracking-wider text-xs">Il Director definisce</h4>
                     <ul className="space-y-3 list-none p-0">
                       <li className="flex gap-3 items-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-brand-blue"></div>
@@ -1914,7 +2162,7 @@ export default function App() {
                   </div>
                 </div>
                 <div className="mt-8 pt-8 border-t border-white/10 text-center">
-                  <p className="text-xs text-slate-400 italic">"Confronto continuo, supervisione strategica dello specialist e autonomia operativa dell'executive."</p>
+                  <p className="text-xs text-slate-400 italic">"Confronto continuo, supervisione strategica del director e autonomia operativa dell'executive."</p>
                 </div>
               </div>
 
@@ -1928,7 +2176,7 @@ export default function App() {
                     </div>
                     <div className="p-4 bg-white border border-slate-200 rounded-xl">
                       <p className="font-bold text-slate-800 text-xs mb-1">Collaborazione Integrata</p>
-                      <p className="text-[10px] text-slate-500 m-0">Lavorare in coordinamento con gli altri specialist per proposte coerenti.</p>
+                      <p className="text-[10px] text-slate-500 m-0">Lavorare in coordinamento con gli altri director per proposte coerenti.</p>
                     </div>
                     <div className="p-4 bg-white border border-slate-200 rounded-xl">
                       <p className="font-bold text-slate-800 text-xs mb-1">Responsabilità Operativa</p>
@@ -1943,7 +2191,7 @@ export default function App() {
                     <div className="flex flex-col items-center justify-center h-full space-y-4 not-prose">
                       <div className="px-4 py-2 bg-brand-blue text-white rounded-lg text-[10px] font-bold w-32 text-center">CMO</div>
                       <ArrowDown className="w-4 h-4 text-brand-blue/30" />
-                      <div className="px-4 py-2 bg-white border border-brand-blue text-brand-blue rounded-lg text-[10px] font-bold w-32 text-center shadow-sm">Specialist Director</div>
+                      <div className="px-4 py-2 bg-white border border-brand-blue text-brand-blue rounded-lg text-[10px] font-bold w-32 text-center shadow-sm">Director</div>
                       <ArrowDown className="w-4 h-4 text-brand-blue/30" />
                       <div className="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-lg text-[10px] font-bold w-32 text-center shadow-sm">Executive Manager</div>
                       <ArrowDown className="w-4 h-4 text-brand-blue/30" />
@@ -1997,7 +2245,7 @@ export default function App() {
                   <h3 className="mt-0 text-slate-800">Collaborazioni Chiave</h3>
                   <div className="space-y-4">
                     <div className="p-4 bg-white border border-slate-100 rounded-xl">
-                      <p className="font-bold text-brand-blue text-[10px] uppercase mb-1">Con lo Specialist</p>
+                      <p className="font-bold text-brand-blue text-[10px] uppercase mb-1">Con il Director</p>
                       <p className="text-[10px] text-slate-500 leading-relaxed">Riceve l'indirizzo strategico e gestisce l'operatività. Si confronta per chiarire dubbi o ricevere indicazioni tecniche.</p>
                     </div>
                     <div className="p-4 bg-white border border-slate-100 rounded-xl">
@@ -2038,7 +2286,7 @@ export default function App() {
                   </div>
                   <ArrowDown className="w-4 h-4 text-slate-400" />
                   <div className="px-6 py-3 bg-slate-50 border border-slate-200 rounded-xl text-[10px] font-medium text-slate-600 w-full max-w-sm text-center">
-                    Specialist Director (Indirizzo Strategico)
+                    Director (Indirizzo Strategico)
                   </div>
                   <ArrowDown className="w-4 h-4 text-brand-red" />
                   <div className="px-6 py-3 bg-brand-red text-white rounded-xl text-[10px] font-bold w-full max-w-sm text-center shadow-lg shadow-brand-red/20">
@@ -2107,8 +2355,9 @@ export default function App() {
                 <h3 className="text-brand-blue mt-0 flex items-center gap-2"><Target className="w-5 h-5" /> Obiettivo del Ruolo</h3>
                 <ul className="text-sm text-brand-blue/80 space-y-1 mb-0 list-none p-0">
                   <li>• Gestione Aziende Partner attivi e sviluppo nuove progettualità</li>
-                  <li>• Gestione upselling e coordinamento specialist</li>
+                  <li>• Gestione upselling e coordinamento director</li>
                   <li>• Caricamento e gestione commesse su Chronos</li>
+                  <li>• Caricamento documentazione amministrativa e file di progetto su Drive</li>
                   <li>• Supervisione della documentazione di progetto</li>
                 </ul>
               </div>
@@ -2144,14 +2393,14 @@ export default function App() {
                       <ul className="text-xs text-slate-600 space-y-1">
                         <li>• Valuta la fattibilità del progetto</li>
                         <li>• Definisce il livello strategico necessario</li>
-                        <li>• Decide il coinvolgimento degli specialist</li>
+                        <li>• Decide il coinvolgimento dei director</li>
                         <li>• Orienta la struttura della proposta</li>
                       </ul>
                     </div>
                     <div className="space-y-3">
                       <div className="p-3 bg-white border border-slate-100 rounded-xl">
-                        <p className="font-bold text-slate-800 text-[10px] uppercase mb-1">Percorso Specialist</p>
-                        <p className="text-[10px] text-slate-500">Progetti complessi: Debrief interno con CMO, Specialist e Account.</p>
+                        <p className="font-bold text-slate-800 text-[10px] uppercase mb-1">Percorso Director</p>
+                        <p className="text-[10px] text-slate-500">Progetti complessi: Debrief interno con CMO, Director e Account.</p>
                       </div>
                       <div className="p-3 bg-white border border-slate-100 rounded-xl">
                         <p className="font-bold text-slate-800 text-[10px] uppercase mb-1">Percorso Account</p>
@@ -2176,7 +2425,7 @@ export default function App() {
                     <div className="w-10 h-10 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center flex-shrink-0 font-bold">2</div>
                     <div>
                       <h4 className="font-bold text-slate-900 m-0">Project Integration</h4>
-                      <p className="text-xs text-slate-500 m-0">Gli Specialist creano i contenuti tecnici; l'Account armonizza il documento garantendo coerenza totale.</p>
+                      <p className="text-xs text-slate-500 m-0">I Director creano i contenuti tecnici; l'Account armonizza il documento garantendo coerenza totale.</p>
                     </div>
                   </div>
                   <div className="flex gap-4 items-start p-5 bg-white border border-slate-200 rounded-2xl shadow-sm">
@@ -2274,7 +2523,7 @@ export default function App() {
                   {[
                     'Ingresso Progetto (Loris/Giulio/Partner)',
                     'Condivisione con CMO (Filtro Strategico)',
-                    'Decisione Percorso (Specialist vs Account)',
+                    'Decisione Percorso (Account / Director)',
                     'Sviluppo Documento Condiviso (Canva/PPT)',
                     'Integrazione Account (Project Integrator)',
                     'Validazione Interna (CMO/Client Director)',
@@ -2449,7 +2698,7 @@ export default function App() {
           {activeSection === 'seo' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <h1>SEO, AEO, GEO & Marketing Automation</h1>
-              <p className="text-lg">Lo Specialist è responsabile di aumentare la visibilità organica, generare traffico qualificato e trasformare gli utenti in lead attraverso sistemi di automazione.</p>
+              <p className="text-lg">Il Director è responsabile di aumentare la visibilità organica, generare traffico qualificato e trasformare gli utenti in lead attraverso sistemi di automazione.</p>
               
               <div className="bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10 mb-12">
                 <h3 className="text-brand-blue mt-0 flex items-center gap-2"><Target className="w-5 h-5" /> Obiettivo del Ruolo</h3>
@@ -2499,7 +2748,7 @@ export default function App() {
               </div>
 
               <h2>Gestione Progetti Web & Sviluppo</h2>
-              <p>Il SEO Specialist garantisce che ogni sito realizzato sia ottimizzato nativamente per i motori di ricerca.</p>
+              <p>Il SEO Director garantisce che ogni sito realizzato sia ottimizzato nativamente per i motori di ricerca.</p>
               
               <div className="space-y-6">
                 <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl">
@@ -2508,7 +2757,7 @@ export default function App() {
                     {[
                       { label: 'Account', sub: 'Relazione Cliente' },
                       { label: 'Digital Manager', sub: 'Supervisione' },
-                      { label: 'SEO Specialist', sub: 'Progettazione' },
+                      { label: 'SEO Director', sub: 'Progettazione' },
                       { label: 'Team Tecnico', sub: 'Sviluppo' }
                     ].map((step, i, arr) => (
                       <React.Fragment key={i}>
@@ -2528,7 +2777,7 @@ export default function App() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="p-5 bg-white border border-slate-200 rounded-xl">
                     <h4 className="font-bold text-slate-900 text-sm mb-2">Relazione & Separazione Ruoli</h4>
-                    <p className="text-xs text-slate-500 leading-relaxed">Lo Specialist non gestisce direttamente il cliente. La comunicazione avviene tramite l'Account Manager, che raccoglie richieste e condivide feedback.</p>
+                    <p className="text-xs text-slate-500 leading-relaxed">Il Director non gestisce direttamente il cliente. La comunicazione avviene tramite l'Account Manager, che raccoglie richieste e condivide feedback.</p>
                   </div>
                   <div className="p-5 bg-white border border-slate-200 rounded-xl">
                     <h4 className="font-bold text-slate-900 text-sm mb-2">Collaborazione Creativa</h4>
@@ -2604,7 +2853,7 @@ export default function App() {
               
               <div className="bg-brand-blue/5 p-6 rounded-2xl border border-brand-blue/10 mb-12">
                 <h3 className="text-brand-blue mt-0 flex items-center gap-2"><Target className="w-5 h-5" /> Obiettivo del Ruolo</h3>
-                <p className="text-sm text-brand-blue/80 mb-0">Operano sotto la supervisione del Creative Director (Paolo) e collaborano con Specialist, Account ed Executive per garantire standard creativi elevati e coerenza visiva.</p>
+                <p className="text-sm text-brand-blue/80 mb-0">Operano sotto la supervisione del Creative Director (Paolo) e collaborano con Director, Account ed Executive per garantire standard creativi elevati e coerenza visiva.</p>
               </div>
 
               <h2>1. Ambiti di Lavoro</h2>
@@ -2700,7 +2949,7 @@ export default function App() {
                     <div className="w-10 h-10 rounded-lg bg-brand-blue/10 text-brand-blue flex items-center justify-center flex-shrink-0 font-bold">2</div>
                     <div>
                       <h4 className="font-bold text-slate-900 m-0">Sviluppo Proposta</h4>
-                      <p className="text-xs text-slate-500 m-0">Creazione prima versione. Confronto con Creative Director o Specialist di area.</p>
+                      <p className="text-xs text-slate-500 m-0">Creazione prima versione. Confronto con Creative Director o Director di area.</p>
                     </div>
                   </div>
                   <div className="flex gap-4 items-start p-5 bg-white border border-slate-200 rounded-2xl shadow-sm">
@@ -2750,7 +2999,7 @@ export default function App() {
                   </div>
                   <div className="flex gap-2">
                     <CheckCircle2 className="w-4 h-4 text-brand-red flex-shrink-0" />
-                    <p className="text-sm text-brand-blue/80 m-0"><strong>Collaborazione:</strong> Coordinamento costante con team e specialist.</p>
+                    <p className="text-sm text-brand-blue/80 m-0"><strong>Collaborazione:</strong> Coordinamento costante con team e director.</p>
                   </div>
                   <div className="flex gap-2">
                     <CheckCircle2 className="w-4 h-4 text-brand-red flex-shrink-0" />
@@ -2777,7 +3026,7 @@ export default function App() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 not-prose">
                   {[
                     { role: 'Account Manager', desc: 'Gestione delle Aziende Partner.' },
-                    { role: 'Specialist Director', icon: Briefcase, desc: 'Integrazione strategica dei progetti.' },
+                    { role: 'Director', icon: Briefcase, desc: 'Integrazione strategica dei progetti.' },
                     { role: 'CMO', icon: Target, desc: 'Allineamento tra le diverse aree.' },
                     { role: 'Creative & Content', icon: Palette, desc: 'Produzione materiali di comunicazione.' },
                     { role: 'Team Eventi', icon: Video, desc: 'Integrazione con produzioni live.' }
