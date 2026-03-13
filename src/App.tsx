@@ -71,14 +71,9 @@ export default function App() {
     { id: 'ceo', label: 'CEO', icon: ShieldCheck, category: 'Mansioni - Direzione' },
     { id: 'sales-dir', label: 'Sales & Client Director', icon: TrendingUp, category: 'Mansioni - Direzione' },
     { id: 'financial-dir', label: 'Financial Director', icon: BarChart, category: 'Mansioni - Direzione' },
-    { id: 'flows', label: 'Flussi Trasversali', icon: GitBranch, category: 'Processi' },
-    { id: 'brief', label: 'Brief & Debrief', icon: FileText, category: 'Processi' },
-    { id: 'raci', label: 'Matrice RACI', icon: CheckCircle2, category: 'Governance' },
-    { id: 'sla', label: 'SLA Operativi', icon: Clock, category: 'Governance' },
-    { id: 'meetings', label: 'Gestione Riunioni', icon: MessageSquare, category: 'Governance' },
     { id: 'cmo', label: 'CMO', icon: Target, category: 'Mansioni - Direzione' },
     { id: 'directors', label: 'Directors', icon: Briefcase, category: 'Mansioni - Direzione' },
-    {id: 'strategy', label: 'Strategic Director', icon: Compass, category: 'Mansioni - Direzione', indentation: 1 },
+    { id: 'strategy', label: 'Strategic Director', icon: Compass, category: 'Mansioni - Direzione', indentation: 1 },
     { id: 'digital-dir', label: 'Digital Strategy Director', icon: Globe, category: 'Mansioni - Direzione', indentation: 1 },
     { id: 'creative-dir', label: 'Creative Director', icon: Palette, category: 'Mansioni - Direzione', indentation: 1 },
     { id: 'media-dir', label: 'Media Director', icon: PieChart, category: 'Mansioni - Direzione', indentation: 1 },
@@ -90,6 +85,11 @@ export default function App() {
     { id: 'content', label: 'Content Coordinator', icon: FileText, category: 'Mansioni - Operative' },
     { id: 'grafici', label: 'Grafici / Visual', icon: PenTool, category: 'Mansioni - Operative' },
     { id: 'pr', label: 'Ufficio PR', icon: Radio, category: 'Mansioni - Operative' },
+    { id: 'flows', label: 'Flussi Trasversali', icon: GitBranch, category: 'Processi' },
+    { id: 'brief', label: 'Brief & Debrief', icon: FileText, category: 'Processi' },
+    { id: 'raci', label: 'Matrice RACI', icon: CheckCircle2, category: 'Governance' },
+    { id: 'sla', label: 'SLA Operativi', icon: Clock, category: 'Governance' },
+    { id: 'meetings', label: 'Gestione Riunioni', icon: MessageSquare, category: 'Governance' },
   ];
 
   const categories = Array.from(new Set(navItems.map(item => item.category)));
